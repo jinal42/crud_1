@@ -39,5 +39,13 @@ def dele(request,id):
 
 # update :-
 
-def update_data(request):
-      return render(request,'enroll/updates_stud.html')
+def update_data(request,id):
+  if request.method =="POST":
+    pi=User.objects.get(pk=id)
+    fm=StudentReg(request.POST,instance=pi)
+    if fm.is_valid():
+      fm.save()
+  else :
+      pi=User.objects.get(pk=id)
+      fm=StudentReg(instance=pi)
+  return render(request,'enroll/updates_stud.html',{'form':fm})
