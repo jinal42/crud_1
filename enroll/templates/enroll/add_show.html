@@ -30,11 +30,11 @@
                         {% for s in stu %}
                               <tr>
                               <th scope="row">{{s.id}}</th>
-                              <td>{{s.name}}</td>
-                              <td>{{s.email}}</td>
-                              <td>{{s.password}}</td>
+                              <td scope="col">{{s.name}}</td>
+                              <td scope="col">{{s.email}}</td>
+                              <td scope="col">{{s.password}}</td>
                               <td>
-                                    <a href="{% url 'updatedata' s.id %}" class="btn btn-warning btn-sm" >Edit</a>
+                                    <a href="{{s.id}}" class="btn btn-warning btn-sm" >Edit</a>
 
                                     <form  action="{% url 'deletedata' s.id %}" method="post" class="d-inline">
                                           {% csrf_token %} 
